@@ -12,18 +12,36 @@ export CMAKE_MODULE_PATH=$BASEDIR/install/cmake
 export CMAKE_PREFIX_PATH=$BASEDIR/install/cmake:$CMAKE_PREFIX_PATH
 ```
 
-## build the library
+## Build the library
 ```sh
 mkdir $BASEDIR/BuildTest/build ; cd $BASEDIR/BuildTest/build
 cmake -DCMAKE_INSTALL_PREFIX=$BASEDIR/install ..
 make -j 4 install
 ```
 
-## build the stand-alone tester
+## Build the stand-alone tester
 ```sh
 mkdir $BASEDIR/UseTest/build ; cd $BASEDIR/UseTest/build
 cmake  ..
 make
+```
+
+#### Expected behavior:
+The payload is
+```c++
+TClass branchClass(c->GetBranch("event")->GetClassName());
+  if (branchClass.InheritsFrom("dicttest::EventDis")) {
+    cout << "yarp" << endl;
+  }
+```
+Since this code literally just used EventPythia to create the tree, expect `yarp`
+
+#### Observed behavior:
+```
+Warning in <TClass::TClass>: no dictionary for class dicttest::EventPythia is available
+Error in <TObjArray::At>: index 0 out of bounds (size: 1, this: 0x1360bd2d0)
+Error in <TObjArray::At>: index 0 out of bounds (size: 1, this: 0x1360bd2d0)
+norp
 ```
 
 
