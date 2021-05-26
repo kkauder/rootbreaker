@@ -9,9 +9,6 @@
 class TLorentzVector;
 
 Long64_t BuildTree(const std::string& inputFileName,
-                   const std::string& outputDirName = ".",
-                   const Long64_t maxEvent = 0,
-                   const std::string& logFileName = "");
-
+                   const std::string& outputDirName = ".");
 
 #endif  // INCLUDE_EICSMEAR_FUNCTIONS_H_

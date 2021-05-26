@@ -31,13 +31,10 @@ add_library(
    eictest
    SHARED
    ${CMAKE_CURRENT_BINARY_DIR}/dicttestDict.cxx
-   ${CMAKE_CURRENT_BINARY_DIR}/smearDict.cxx
    src/BuildTree.cxx
    src/EventDis.cxx
    src/EventMC.cxx
-   src/EventStupid.cxx
    src/EventPythia.cxx
-   src/SmearTree.cxx
    )
 
  
@@ -62,19 +59,6 @@ target_compile_options(eictest PRIVATE -Wall -Wextra -pedantic -g)
 ##############################################################################################################
 # Generate various CINT dictionaries.
 
-#----------------------------------------------------------------------------
-# Arguments are:
-# function custom_generate_root_dict( dictionary
-#                                    header1 header2 ...
-#                                    LINKDEF linkdef1 ...
-#                                    OPTIONS opt1...
-#                                    INCPATH includepath1...)
-# I tried my best to pull the include directories out of the target
-# but it chokes on $<INSTALL_INTERFACE>,   $<BUILD_INTERFACE>
-# so we're passing them by hand
-# include( custom_generate_root_dict )
-# Get the generate dictionary command from ROOT
-
 if(ROOT_VERSION VERSION_LESS 6.20)
   include("${ROOT_DIR}/modules/RootNewMacros.cmake")
 else()
@@ -90,31 +74,13 @@ set(
   functions.h
   EventDis.h
   EventMC.h
-  EventStupid.h
   EventPythia.h
   VirtualEvent.h
   )
-set( ERHIC_INCPATHS
-  ${CMAKE_SOURCE_DIR}/include
-  ${CMAKE_SOURCE_DIR}/cint
-  ${ROOT_INCLUDE_DIRS}
-  )
-
    
 ROOT_GENERATE_DICTIONARY( dicttestDict
   NODEPHEADERS ${ERHIC_HEADERS}
   LINKDEF cint/LinkDef.h
-  # OPTIONS -rml libeicsmear -rmf libeicsmear.rootmap -s libeicsmear -multiDict
-  # INCPATH ${ERHIC_INCPATHS}
-  )
-
-# Smearing code dictionary.
-ROOT_GENERATE_DICTIONARY( smearDict
-  NODEPHEADERS
-  smear/functions.h
-  LINKDEF cint/smearLinkDef.h
-  # OPTIONS -rml libeicsmear -rmf libeicsmear.rootmap -s libeicsmear -multiDict
-  # INCPATH ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/cint ${ROOT_INCLUDE_DIRS}
   )
 
 ##############################################################################################################
@@ -141,9 +107,6 @@ install(TARGETS eictest
 install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/
   DESTINATION  include/
   )
-INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}/include/smear
-  DESTINATION DESTINATION  include/smear
-  )
 
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/include/functions.h
   DESTINATION include
@@ -151,9 +114,7 @@ INSTALL(FILES ${CMAKE_SOURCE_DIR}/include/functions.h
 
 INSTALL(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/libdicttestDict_rdict.pcm
-  ${CMAKE_CURRENT_BINARY_DIR}/libsmearDict_rdict.pcm
   ${CMAKE_CURRENT_BINARY_DIR}/libdicttestDict.rootmap
-  ${CMAKE_CURRENT_BINARY_DIR}/libsmearDict.rootmap
   DESTINATION lib
   )
 

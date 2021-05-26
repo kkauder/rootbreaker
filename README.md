@@ -10,20 +10,25 @@ export ROOT_LIBRARY_PATH=$BASEDIR/install/lib
 export DYLD_LIBRARY_PATH=$BASEDIR/install/lib:$DYLD_LIBRARY_PATH
 export CMAKE_MODULE_PATH=$BASEDIR/install/cmake
 export CMAKE_PREFIX_PATH=$BASEDIR/install/cmake:$CMAKE_PREFIX_PATH
+## make sure we don't have any detritus
+rm -r $BASEDIR/install
 ```
 
 ## Build the library
 ```sh
+rm -r $BASEDIR/BuildTest/build
 mkdir $BASEDIR/BuildTest/build ; cd $BASEDIR/BuildTest/build
 cmake -DCMAKE_INSTALL_PREFIX=$BASEDIR/install ..
 make -j 4 install
 ```
 
-## Build the stand-alone tester
+## Build and run the stand-alone tester
 ```sh
+rm -r $BASEDIR/UseTest/build
 mkdir $BASEDIR/UseTest/build ; cd $BASEDIR/UseTest/build
 cmake  ..
 make
+./tester
 ```
 
 #### Expected behavior:
