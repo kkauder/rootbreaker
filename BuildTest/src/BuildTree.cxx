@@ -18,7 +18,7 @@ Long64_t
 BuildTree(const std::string& outName ) {
 
   // Open the ROOT file and create tree
-  auto mRootFile = new TFile(outName, "RECREATE");
+  auto mRootFile = new TFile(outName.c_str(), "RECREATE");
   auto mTree = new TTree("EICTree", "my EIC tree");
   
   // Allocate memory for the branch buffer and

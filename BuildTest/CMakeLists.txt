@@ -75,7 +75,6 @@ set(
   EventDis.h
   EventMC.h
   EventPythia.h
-  VirtualEvent.h
   )
    
 ROOT_GENERATE_DICTIONARY( dicttestDict

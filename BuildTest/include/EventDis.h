@@ -1,12 +1,12 @@
 #ifndef INCLUDE_EICSMEAR_DICTTEST_EVENTDIS_H_
 #define INCLUDE_EICSMEAR_DICTTEST_EVENTDIS_H_
 
-#include <cmath>  // For pow
+#include <cmath> // for nan
+#include <TObject.h>
 #include <Rtypes.h>  // For ClassDef
-#include "VirtualEvent.h"
 
 namespace dicttest {
-class EventDis : public VirtualEvent {
+class EventDis : public TObject {
  public:
   /**
    Destructor.
@@ -17,6 +17,11 @@ class EventDis : public VirtualEvent {
    Default constructor.
    */
   EventDis();
+
+  /**
+   Returns the number of tracks in the event.
+   */
+  virtual UInt_t GetNTracks() const = 0;
 
   /**
    Sets Bjorken-x of the event.

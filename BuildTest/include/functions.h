@@ -8,7 +8,6 @@
 
 class TLorentzVector;
 
-Long64_t BuildTree(const std::string& inputFileName,
-                   const std::string& outputDirName = ".");
+Long64_t BuildTree(const std::string& inputFileName );
 
 #endif  // INCLUDE_EICSMEAR_FUNCTIONS_H_

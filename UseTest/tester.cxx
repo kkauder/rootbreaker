@@ -29,11 +29,11 @@ int main(int argc, char* argv[]){
 
   // Make a root tree
   TString rootname = "test.root";
-  auto buildresult = BuildTree(rootname.Data(), ".");
+  auto buildresult = BuildTree(rootname.Data());
 
   // Now load that tree - this should work
   TChain* c = new TChain("EICTree");
-  c->Add(inname+".root");
+  c->Add(rootname);
   c->Show(0);
 
   // Now more in-depth manipulation - this breaks
