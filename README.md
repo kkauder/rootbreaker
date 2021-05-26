@@ -8,6 +8,7 @@ export BASEDIR=`pwd`
 export ROOT_INCLUDE_PATH=$BASEDIR/install/include
 export ROOT_LIBRARY_PATH=$BASEDIR/install/lib
 export DYLD_LIBRARY_PATH=$BASEDIR/install/lib:$DYLD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$BASEDIR/install/lib:$LD_LIBRARY_PATH
 export CMAKE_MODULE_PATH=$BASEDIR/install/cmake
 export CMAKE_PREFIX_PATH=$BASEDIR/install/cmake:$CMAKE_PREFIX_PATH
 ## make sure we don't have any detritus
