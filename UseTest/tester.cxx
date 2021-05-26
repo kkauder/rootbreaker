@@ -4,26 +4,16 @@
 // Build -> Smear -> Load and befriend -> Analyze
 
 #include <functions.h>
-
 #include "EventPythia.h"
 
-// Note: The remaining includes are not necessary for eic-smear usage
 #include <TSystem.h>
-#include <TFile.h>
+#include <TClass.h>
 #include <TChain.h>
-#include <TCanvas.h>
 
-#include <string>
 #include <iostream>
-#include <exception>
-#include <vector>
-
-// Convenience only
 using std::cout;
 using std::cerr;
 using std::endl;
-using std::string;
-using std::vector;
   
 int main(int argc, char* argv[]){
 
