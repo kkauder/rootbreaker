@@ -12,15 +12,11 @@
 // namespaces
 #pragma link C++ namespace dicttest;
 
-// #pragma link C++ class TLorentzVector+;
-
 // Functions
 #pragma link C++ function BuildTree;
 
 // Base event classes
 #pragma link C++ class dicttest::EventMC+;
-#pragma link C++ class dicttest::EventStupid+;
-#pragma link C++ class dicttest::VirtualEvent+;
 #pragma link C++ class dicttest::EventDis+;
 
 // Event classes for individual generators

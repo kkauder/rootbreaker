@@ -49,8 +49,15 @@ Error in <TObjArray::At>: index 0 out of bounds (size: 1, this: 0x1360bd2d0)
 norp
 ```
 
+#### Interactive usage works:
+```
+% root -l
+root [0] gSystem->Load("libeictest")
+## paste contents of tester.cxx
+yarp
+```
 
-## NB: Root options
+## FYI: Root compile flags
 ```sh
 git checkout v6-24-00
 cmake -D unuran=on -D minuit2=on -D roofit=on \

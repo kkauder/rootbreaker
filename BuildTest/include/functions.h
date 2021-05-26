@@ -6,8 +6,6 @@
 #include <Rtypes.h>
 #include <TString.h>
 
-class TLorentzVector;
-
 Long64_t BuildTree(const std::string& inputFileName );
 
 #endif  // INCLUDE_EICSMEAR_FUNCTIONS_H_
