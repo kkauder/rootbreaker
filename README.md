@@ -4,6 +4,8 @@ Minimal-ish test to demonstrate dictionary issues in root 6.24
 ## Preparation
 ```sh
 source $ROOTSYS/bin/thisroot.sh
+git clone https://github.com/kkauder/rootbreaker.git
+cd rootbreaker
 export BASEDIR=`pwd`
 export ROOT_INCLUDE_PATH=$BASEDIR/install/include
 export ROOT_LIBRARY_PATH=$BASEDIR/install/lib
