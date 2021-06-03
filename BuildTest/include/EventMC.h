@@ -4,13 +4,12 @@
 
 #include <string>
 #include <vector>
+#include <cmath> // for nan
 
+#include <TObject.h>
+#include <Rtypes.h>  // For ClassDef
 #include <TClonesArray.h>
 #include <TLorentzVector.h>
-
-#include "EventDis.h"
-
-class TTree;
 
 namespace dicttest {
 
@@ -18,7 +17,7 @@ namespace dicttest {
  Abstract base class for DIS Monte Carlo events.
  Implements common event properties and methods.
  */
-class EventMC : public EventDis {
+class EventMC : public TObject {
  public:
   /**
    Constructor.
@@ -54,8 +53,18 @@ class EventMC : public EventDis {
    */
   virtual void SetNTracks(int n);
 
+  /**
+     Sets Bjorken-x of the event.
+  */
+  virtual void SetX( const Double_t newx);
+  
+  /**
+   Returns Bjorken-x of the event.
+  */
+  virtual Double_t GetX() const;
 
  protected:
+  Double32_t x;  ///< Bjorken scaling variable
   Int_t nTracks;  ///< Number of Particles in the event (intermediate + final)
   TClonesArray particles;  ///< Particle list
 
@@ -77,6 +86,15 @@ inline TLorentzVector* EventMC::GetTrack(UInt_t u) const {
 inline void EventMC::SetNTracks(int n) {
   nTracks = n;
 }
+
+inline void EventMC::SetX( const Double_t newx){
+  x = newx;
+ }
+
+inline Double_t EventMC::GetX() const {
+  return x;
+}
+
 
 }  // namespace dicttest
 

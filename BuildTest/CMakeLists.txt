@@ -32,7 +32,6 @@ add_library(
    SHARED
    ${CMAKE_CURRENT_BINARY_DIR}/dicttestDict.cxx
    src/BuildTree.cxx
-   src/EventDis.cxx
    src/EventMC.cxx
    src/EventPythia.cxx
    )
@@ -72,7 +71,6 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(
   ERHIC_HEADERS
   functions.h
-  EventDis.h
   EventMC.h
   EventPythia.h
   )
