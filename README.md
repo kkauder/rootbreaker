@@ -14,12 +14,12 @@ export DYLD_LIBRARY_PATH=$BASEDIR/install/lib:$DYLD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$BASEDIR/install/lib:$LD_LIBRARY_PATH
 export CMAKE_MODULE_PATH=$BASEDIR/install/cmake
 export CMAKE_PREFIX_PATH=$BASEDIR/install/cmake:$CMAKE_PREFIX_PATH
-## make sure we don't have any detritus
-rm -r $BASEDIR/install
 ```
 
 ## Build the library and tester
 ```sh
+## make sure we don't have any detritus
+rm -r $BASEDIR/install
 rm -r $BASEDIR/build
 mkdir $BASEDIR/build ; cd $BASEDIR/build
 cmake -DCMAKE_INSTALL_PREFIX=$BASEDIR/install ..
