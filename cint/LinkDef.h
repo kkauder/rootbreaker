@@ -15,9 +15,8 @@
 // Functions
 #pragma link C++ function BuildTree;
 
-// Base event classes
+// Base event class
 #pragma link C++ class dicttest::EventMC+;
-#pragma link C++ class dicttest::EventDis+;
 
 // Event classes for individual generators
 #pragma link C++ class dicttest::EventPythia+;

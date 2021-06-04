@@ -32,7 +32,6 @@ add_library(
    SHARED
    ${CMAKE_CURRENT_BINARY_DIR}/dicttestDict.cxx
    src/BuildTree.cxx
-   src/EventDis.cxx
    src/EventMC.cxx
    src/EventPythia.cxx
    )
@@ -69,16 +68,21 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 
 # Main eRHIC dictionary.
-set(
-  ERHIC_HEADERS
+# set(
+#   ERHIC_HEADERS
+#   functions.h
+#   EventMC.h
+#   EventPythia.h
+#   )
+   
+# ROOT_GENERATE_DICTIONARY( dicttestDict
+#   NODEPHEADERS ${ERHIC_HEADERS}
+#   LINKDEF cint/LinkDef.h
+#   )
+ROOT_GENERATE_DICTIONARY( dicttestDict
   functions.h
-  EventDis.h
   EventMC.h
   EventPythia.h
-  )
-   
-ROOT_GENERATE_DICTIONARY( dicttestDict
-  NODEPHEADERS ${ERHIC_HEADERS}
   LINKDEF cint/LinkDef.h
   )
 
@@ -96,6 +100,14 @@ install(TARGETS eictest
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
+
+add_executable(tester tester.cxx )
+target_link_libraries(tester eictest ${ROOT_LIBRARIES} )
+target_include_directories(tester
+  PRIVATE
+  ${ROOT_INCLUDE_DIRS}
+  )
+
 
 ## Ideally, one would have a small list of headers
 ## matched to the target via set_target_properties(eicsmear PROPERTIES  PUBLIC_HEADER eicsmear/functions.h  )

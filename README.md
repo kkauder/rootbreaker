@@ -1,12 +1,12 @@
 # rootbreaker
-Minimal-ish test to demonstrate dictionary issues. After some testing, 
-it works in 6.20.04 and breaks in in 6.20.06 and thereafter.
+Minimal-ish test to demonstrate dictionary issues.
+After some testing, it works in 6.20.04 and breaks in 6.20.06 and thereafter.
 
 ## Preparation
 ```sh
-source $ROOTSYS/bin/thisroot.sh
 git clone https://github.com/kkauder/rootbreaker.git
 cd rootbreaker
+source $ROOTSYS/bin/thisroot.sh
 export BASEDIR=`pwd`
 export ROOT_INCLUDE_PATH=$BASEDIR/install/include
 export ROOT_LIBRARY_PATH=$BASEDIR/install/lib
@@ -18,20 +18,16 @@ export CMAKE_PREFIX_PATH=$BASEDIR/install/cmake:$CMAKE_PREFIX_PATH
 rm -r $BASEDIR/install
 ```
 
-## Build the library
+## Build the library and tester
 ```sh
-rm -r $BASEDIR/BuildTest/build
-mkdir $BASEDIR/BuildTest/build ; cd $BASEDIR/BuildTest/build
+rm -r $BASEDIR/build
+mkdir $BASEDIR/build ; cd $BASEDIR/build
 cmake -DCMAKE_INSTALL_PREFIX=$BASEDIR/install ..
 make -j 4 install
 ```
 
-## Build and run the stand-alone tester
+## Run the tester
 ```sh
-rm -r $BASEDIR/UseTest/build
-mkdir $BASEDIR/UseTest/build ; cd $BASEDIR/UseTest/build
-cmake  ..
-make
 ./tester
 ```
 
@@ -45,7 +41,7 @@ TClass branchClass(c->GetBranch("event")->GetClassName());
 ```
 Since this code literally just used EventPythia to create the tree, expect `yarp`
 
-#### Observed behavior:
+#### Observed behavior for root 6.20.06 and beyond:
 ```
 Warning in <TClass::TClass>: no dictionary for class dicttest::EventPythia is available
 Error in <TObjArray::At>: index 0 out of bounds (size: 1, this: 0x1360bd2d0)
@@ -63,7 +59,7 @@ yarp
 
 ## FYI: Root compile flags
 ```sh
-git checkout v6-24-00
+git checkout v6-20-06
 cmake -D unuran=on -D minuit2=on -D roofit=on \
       -D gdml=on \
       -Dfortran=ON \

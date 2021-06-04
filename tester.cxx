@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
 
   // Now more in-depth manipulation - this breaks
   TClass branchClass(c->GetBranch("event")->GetClassName());
-  if (branchClass.InheritsFrom("dicttest::EventDis")) {
+  if (branchClass.InheritsFrom("dicttest::EventMC")) {
     cout << "yarp" << endl;
   } else {
     cout << "norp" << endl;
