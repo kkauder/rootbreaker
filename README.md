@@ -1,5 +1,6 @@
 # rootbreaker
-Minimal-ish test to demonstrate dictionary issues in root 6.24
+Minimal-ish test to demonstrate dictionary issues. After some testing, 
+it works in 6.20.04 and breaks in in 6.20.06 and thereafter.
 
 ## Preparation
 ```sh
