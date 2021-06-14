@@ -32,8 +32,17 @@ int main(int argc, char* argv[]){
     cout << "yarp" << endl;
   } else {
     cout << "norp" << endl;
-  }   
+  }
 
+  // // Update, this workaround fixes the issue. 
+  // TClass* branchClass = TClass::GetClass(c->GetBranch("event")->GetClassName());
+  // if (branchClass->InheritsFrom("dicttest::EventMC")) {
+  //   cout << "yarp" << endl;
+  // } else {
+  //   cout << "norp" << endl;
+  // }
+
+    
   return 0;
 }
 // ---------------------------------------------------------------

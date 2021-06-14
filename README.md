@@ -2,6 +2,10 @@
 Minimal-ish test to demonstrate dictionary issues.
 After some testing, it works in 6.20.04 and breaks in 6.20.06 and thereafter.
 
+## Update:
+The workaround at https://github.com/root-project/root/issues/8250#issuecomment-855978968
+circumvents fixes this issue. 
+
 ## Preparation
 ```sh
 git clone https://github.com/kkauder/rootbreaker.git
